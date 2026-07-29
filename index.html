@@ -24,12 +24,18 @@ h1,h2,h3,.hand{font-family:'LXGW WenKai TC','Noto Sans TC',serif}
 }
 /* 導覽列 */
 nav{position:sticky;top:0;z-index:50;background:var(--milk);border-bottom:3px dashed var(--toast);
-  padding:10px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:8px;margin-right:auto;cursor:pointer}
+  padding:10px 16px;display:flex;align-items:center;flex-wrap:wrap;row-gap:8px}
+.brand{display:flex;align-items:center;gap:8px;margin-right:auto;cursor:pointer;flex:1 1 auto;min-width:0}
+.tabs{display:flex;align-items:center;gap:6px;flex:1 1 100%;justify-content:center;overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media(min-width:760px){.tabs{flex:0 1 auto;justify-content:flex-end}}
 .brand .logo-txt{font-family:'LXGW WenKai TC',serif;font-weight:700;font-size:1.1rem;letter-spacing:.05em}
 .brand .logo-en{font-family:'Patrick Hand',cursive;font-size:.72rem;color:var(--toast);display:block;letter-spacing:.12em;line-height:1}
 nav .tab{background:none;cursor:pointer;color:var(--cocoa);font-family:'LXGW WenKai TC',serif;font-size:.95rem;
-  padding:6px 12px;border-radius:14px 16px 15px 13px;border:2px solid transparent;transition:.2s}
+  padding:6px 12px;border-radius:14px 16px 15px 13px;border:2px solid transparent;transition:.2s;white-space:nowrap;flex:none}
+@media (max-width:420px){
+  nav .tab{font-size:.85rem;padding:6px 8px}
+  .brand .logo-txt{font-size:1rem}
+}
 nav .tab:hover{background:var(--cream)}
 nav .tab.on{border-color:var(--toast);background:var(--cream);color:var(--toast);font-weight:700}
 /* 公告橫幅 */
@@ -197,10 +203,12 @@ footer .en{color:var(--toast)}
       <span class="logo-en">SOUFFLEMASTER</span>
     </div>
   </div>
-  <button class="tab on" data-p="home" onclick="go('home')">首頁</button>
-  <button class="tab" data-p="menu" onclick="go('menu')">菜單</button>
-  <button class="tab" data-p="about" onclick="go('about')">關於我們</button>
-  <button class="tab" data-p="info" onclick="go('info')">店家資訊</button>
+  <div class="tabs">
+    <button class="tab on" data-p="home" onclick="go('home')">首頁</button>
+    <button class="tab" data-p="menu" onclick="go('menu')">菜單</button>
+    <button class="tab" data-p="about" onclick="go('about')">關於我們</button>
+    <button class="tab" data-p="info" onclick="go('info')">店家資訊</button>
+  </div>
 </nav>
 
 <a class="notice" href="https://www.threads.com/@souffle_master_lugan" target="_blank" rel="noopener">
